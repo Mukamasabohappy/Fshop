@@ -1,0 +1,118 @@
+.home-footer {
+    background-color: #222; /* Darker base color */
+    color: #eee;
+    padding: 40px 0;
+    font-size: 16px;
+    line-height: 1.6;
+    width: 115em;
+   
+
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 0 50px;
+  }
+  
+  .footer-section {
+    width: 30%;
+  }
+  
+  .footer-section h3 {
+    color: #fff;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #444; /* Subtle underline */
+    padding-bottom: 5px;
+  }
+  
+  .footer-section p {
+    margin-bottom: 15px;
+    color: #ccc; /* Slightly brighter text color */
+  }
+  
+  .footer-section .contact a {
+    display: block;
+    color: #888;
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: color 0.3s;
+  }
+  
+  .footer-section .contact i {
+    color: #666;
+    margin-right: 10px;
+    width: 20px; /* Consistent icon width */
+    text-align: center;
+  }
+  
+  .footer-section .contact a:hover {
+    color: #fff;
+  }
+  
+  .footer-section .links ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section .links a {
+    display: block;
+    color: #bbb;
+    text-decoration: none;
+    margin-bottom: 8px;
+    transition: color 0.3s;
+  }
+  
+  .footer-section .links a:hover {
+    color: #fff;
+  }
+  
+  /* Social Media Styles */
+  .footer-section.social .social-links {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .footer-section.social .social-links a {
+    color: #888;
+    font-size: 1.5em;
+    transition: color 0.3s;
+  }
+  
+  .footer-section.social .social-links a:hover {
+    color: #fff;
+  }
+  
+  /* Credit Card style */
+  .footer-section.social .payment-options{
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+  }
+  .footer-section.social .payment-options  img{
+  width:45x;
+  width: 45px;
+  }
+  
+  .footer-bottom {
+    background-color: #111; /* Even darker bottom */
+    color: #888;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+    top: 100px;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+      padding: 0 30px;
+    }
+  
+    .footer-section {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+  }

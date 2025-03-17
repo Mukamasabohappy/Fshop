@@ -1,0 +1,121 @@
+/* CSS Variables */
+:root {
+    --primary-color: #3498db;
+    --text-color-primary: #333;
+    --text-color-secondary: #777;
+    --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* General Dashboard Styles */
+.dashboard-container {
+    padding: 20px;
+    font-family: sans-serif;
+    max-width: 1200px; /* Example max width */
+    margin: 0 auto; /* Center the container */
+}
+
+.dashboard-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--text-color-primary);
+    text-align: center; /* Center the title */
+}
+
+/* Metric Cards */
+.dashboard-metrics {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.metric-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    padding: 20px;
+    text-align: center;
+    width: 250px;
+    transition: transform 0.3s;
+}
+
+.metric-card:hover {
+    transform: translateY(-5px);
+}
+
+.metric-icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.metric-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color-primary);
+    display: block; /* Ensure proper spacing */
+}
+
+.metric-label {
+    font-size: 1rem;
+    color: var(--text-color-secondary);
+}
+
+/* Charts */
+.dashboard-charts {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: flex-start; /* Vertically align chart containers */
+}
+
+.chart-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    padding: 20px;
+    width: 500px;
+    margin-bottom: 20px;
+}
+
+.chart-container h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: var(--text-color-primary);
+    text-align: center;
+}
+
+/* Top Product Items */
+.top-product-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.top-product-item:last-child {
+    border-bottom: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .dashboard-metrics {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .metric-card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .dashboard-charts {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .chart-container {
+        width: 100%;
+    }
+}
