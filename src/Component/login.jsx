@@ -1,45 +1,63 @@
 import React, { useState, useEffect } from "react";
 import "../Style/Login.css";
-
+import SignupModal from "./SignupModal"; // Import Signup Modal Component
+import axios from "axios";
+import { useNavigate } from "react-router-dom"; // Use for redirection
 
 const LoginWithModal = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(true);  // Open the modal immediately
+  const [isLoginOpen, setIsLoginOpen] = useState(true);
+  const [isSignupOpen, setIsSignupOpen] = useState(false); // State for Signup Modal
+  const navigate = useNavigate(); // To redirect user
 
-  const handleSubmit = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (!email.includes("@")) {
-      setErrorMessage("Invalid email format");
-      return;
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/login",
+        { email, password },
+        {
+          headers: { "Content-Type": "application/json" }, // Ensuring proper format
+        }
+      );
+
+      // Save token and redirect to dashboard
+      localStorage.setItem("token", response.data.token);
+      console.log("Login successful", response.data);
+      navigate("/dashboard"); // Redirect to dashboard after login
+
+    } catch (error) {
+      setErrorMessage(error.response?.data?.error || "Login failed");
     }
-    // Process login request here (e.g., API call)
-    console.log("Logging in with:", { email, password });
-    // You may also want to close the modal after successful login
-    setIsModalOpen(false);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const closeLogin = () => {
+    setIsLoginOpen(false);
   };
 
-  // Automatically open the modal when the component is mounted
+  const openSignup = () => {
+    setIsLoginOpen(false); // Close login modal
+    setIsSignupOpen(true); // Open signup modal
+  };
+
   useEffect(() => {
-    setIsModalOpen(true);
+    setIsLoginOpen(true);
   }, []);
 
   return (
     <div className="Overlay">
-      {isModalOpen && (
+      {/* Login Modal */}
+      {isLoginOpen && (
         <div className="login-modal">
           <div className="login-modal-content">
-            <button className="login-close-button" onClick={closeModal}>
+            <button className="login-close-button" onClick={closeLogin}>
               ×
             </button>
             <h2>Login</h2>
             {errorMessage && <p className="login-error">{errorMessage}</p>}
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleLogin}> {/* Use only one submit handler */}
               <div className="login-form-group">
                 <label htmlFor="email">Email</label>
                 <input
@@ -67,11 +85,17 @@ const LoginWithModal = () => {
               </button>
             </form>
             <p className="login-signup-link">
-              Don't have an account? <a href="#">Sign up</a>
+              Don't have an account?{" "}
+              <span onClick={openSignup} style={{ color: "blue", cursor: "pointer" }}>
+                Sign up
+              </span>
             </p>
           </div>
         </div>
       )}
+
+      {/* Signup Modal */}
+      {isSignupOpen && <SignupModal setIsSignupOpen={setIsSignupOpen} />}
     </div>
   );
 };

@@ -35,7 +35,7 @@ function DashNav() {
       <div className="navbar-left">
         <NavLink to="/dashboard" className="navbar-brand">
           <img src="/path-to-your-logo.png" alt="Shop Logo" className="navbar-logo" />
-          <span className="brand-name">Your Shop Name</span>
+          <span className="brand-name"> Clothing Shop</span>
         </NavLink>
       </div>
 
